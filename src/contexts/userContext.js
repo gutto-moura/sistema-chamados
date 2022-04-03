@@ -92,7 +92,7 @@ function UserProvider({children}){
     }
     return(
         <UserContext.Provider value={
-            {signed: !!user, user, loading, signUp, signOut, signIn, loadingAuth}
+            {signed: !!user, user, loading, signUp, signOut, signIn, loadingAuth, setUser, storageUser}
             }>
             {children}
         </UserContext.Provider>

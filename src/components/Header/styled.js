@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import imgFundo from "../../assets/cover.png" 
 import { Link } from "react-router-dom";
+import { style } from "@mui/system";
+
 
 export const ContainerHome = styled.div`
     margin: 0; 
@@ -35,6 +37,10 @@ export const ContainerImg = styled.div`
         object-fit: cover;
     }
 
+`
+export const Content = styled.div`
+    margin-left: 200px;
+    padding: 1px 16px;
 `
 export const Links = styled(Link)`
     display: block;

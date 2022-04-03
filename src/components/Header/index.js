@@ -14,9 +14,9 @@ export default function Header(){
             <ContainerImg>
                 <img src={user.avatarUrl === null ? avatar : user.avatarUrl } alt = "foto de avatar" />
             </ContainerImg>
-            <Links to="/dashboard"> <FcTodoList size={25} /> Chamados</Links>
-            <Links> <FcPortraitMode size={25} /> Clientes</Links>
-            <Links> <FcSettings size={25} /> Configurações</Links>
+            <Links to="/dashboard" > <FcTodoList size={25} /> Chamados</Links>
+            <Links to="/customer" > <FcPortraitMode size={25} /> Clientes</Links>
+            <Links to="/profile" > <FcSettings size={25} /> Configurações</Links>
         </ContainerHome>
     )
 }

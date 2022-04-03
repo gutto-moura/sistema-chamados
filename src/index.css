@@ -14,6 +14,7 @@ html, body, #root{
 body{
     font-size: 1.1rem ;
     font-family: 'Montserrat',sans-serif;
+    background-color: #E6E6FA;
 }
 a{
     text-decoration: none;
