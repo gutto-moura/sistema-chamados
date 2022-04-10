@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import imgFundo from "../../assets/cover.png" 
 import { Link } from "react-router-dom";
-import { style } from "@mui/system";
 
 
 export const ContainerHome = styled.div`

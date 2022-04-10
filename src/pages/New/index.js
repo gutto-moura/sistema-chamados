@@ -2,23 +2,22 @@ import {useState, useEffect, useContext} from "react";
 import Header from "../../components/Header"
 import Title from "../../components/Title"
 import firebase from "../../services/firebaseConnection";
-import {UserContext} from "../../contexts/userContext";
+import {UserContext} from "../../contexts/userContext.js";
 import {FcAddRow} from "react-icons/fc";
 import {Content} from "../../components/Header/styled"
 import {Container, FormContainer} from "./styled"
+import { toast } from "react-toastify";
 
 export default function New(){
+    const {user} = useContext(UserContext);
 
     const [customers, setCustomers] = useState([])
     const [load, setLoad] = useState(true);
     const [customerSelected, setCustomerSelected] = useState(0);
 
-
     const [assunto, setAssunto] = useState("Suporte");
     const [status, setStatus] = useState("Aberto");
     const [complemento, setComplemento] = useState()
-
-    const {user} = useContext(UserContext);
 
     useEffect(() => {
         async function loadCustomer(){
@@ -54,10 +53,26 @@ export default function New(){
     }
 
 
-    function novoCadastro(e){
+    async function novoCadastro(e){
         e.preventDefault();
-
-        alert("CADASTROU");
+        await firebase.firestore().collection("chamados")
+        .add({
+            created: new Date(),
+            cliente: customers[customerSelected].nomeFantasia,
+            clienteId: customers[customerSelected].id,
+            assunto: assunto,
+            status:status,
+            complemento: complemento,
+            userId: user.uid
+        })
+        .then(() => {
+            toast.success('Chamado cadastrado');
+            setComplemento('');
+            setCustomerSelected(0);
+        }).catch((err) => {
+            toast.error('Erro ao registrar. Tente novamente!')
+            console.log(err);
+        })
     }
 
     function handleCustomers(e){
